@@ -1,0 +1,51 @@
+#input-section{
+    margin-top: 2rem;
+    margin-left: 6rem;
+    *{
+        opacity: .36;
+        display: block;
+        outline: none;
+        border:none;
+    }
+    input{
+        // width: max-content;
+        font-size: 3.2rem;
+        padding :3px;
+        text-transform: uppercase;
+        background: rgba(var(--bg-color),1);
+        color: rgba(var(--text-color),1);
+    }
+    label{
+        color: rgba(var(--text-color),1);
+        font-size: 1rem;
+        opacity: .8;
+        margin-top: 5px;
+        visibility: hidden;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+    input:focus{
+        border-bottom: 2px solid rgba(var(--text-color),1);
+        + label{
+            visibility: visible;
+        }
+    }
+    @media (max-width: 800px){
+        margin-left: 0;
+        margin-top: 3.5rem;
+        text-align: center;
+        input{
+            width: 100%;
+            font-size: 4.1rem;
+            text-align: center;
+        }
+        label{
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+        input:focus{
+            border: none;
+        }
+    }
+
+}

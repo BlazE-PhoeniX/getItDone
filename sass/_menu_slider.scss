@@ -1,0 +1,187 @@
+#menu-slider{
+    input {
+        display: none;
+    }
+    color: rgba(var(--text-color), 1);
+}
+
+#menu-controller{
+    width: calc(4.5vw + 70px);
+    height: 100vh;
+    flex-shrink: 0;
+    padding-top: 40px;
+    background-image: linear-gradient(rgba(var(--sidebar-gradient-1), 1), rgba(var(--sidebar-gradient-2), 1));
+    box-shadow: 0 10px 20px rgba(var(--shadow-color), .19), 0 6px 6px rgba(var(--shadow-color), .23);
+    transition: transform .5s;
+    label {
+        width: 50px;
+        display:block;
+        height: 50px;
+        margin: 0 auto;
+        background: url("../images/hamburger.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+
+#menu-dimmed-bg{
+    visibility: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(var(--text-color),.23);
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transform: translate(-120vw);
+    transition: all .5s .3s, background-color 0s, color 0s;
+}
+
+
+#menu-content {
+    --menu-font-size: 1.25rem;
+    font-size: var(--menu-font-size);
+    line-height: 100%;
+    visibility: hidden;
+    z-index: 2;
+    position: absolute;
+    width: 50%;
+    min-height: 100vh;
+    background: rgba(var(--bg-color),1);
+    top: 0;
+    left: 0;
+    transition: all 1s .4s, background-color 0s, color 0s;
+    transform: translate(-120vw);
+    padding: 40px 100px;
+
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+
+        label{
+            background: url("../images/close.png");
+            width: 36px;
+            height: 36px;
+            background-size: contain;
+            display: block;
+        }
+    }
+
+    #theme {
+        text-transform: uppercase;
+        margin:0;
+        span {
+            padding: 5px;
+            margin-left: 40px;
+            &:hover {
+                opacity: .6;
+            }
+        }
+    }
+
+    #recents{
+        h3{
+            margin-top: 50px;
+            text-transform: uppercase;
+        }
+        #recent-tasks{
+            list-style-type: none;
+        }
+        li{
+            padding: 10px;
+            text-transform: uppercase;
+        }
+    }
+
+    #reset{
+        text-transform: uppercase;
+        margin: 100px 0;
+        width: 50%;
+        padding: 10px;
+        &:hover {
+            background: rgba(var(--text-color),1);
+            color: rgba(var(--bg-color),1);
+        }
+    }
+
+}
+
+input#menu:checked {
+    ~ #menu-controller{ transform: translate(-20vw); }
+    ~ #menu-dimmed-bg{
+        visibility: visible;
+        transform: translate(0);
+    }
+    ~ #menu-content{
+        visibility: visible;
+        transform: translate(0);
+    }
+}
+
+
+@media (max-width: 800px) {
+    #menu-dimmed-bg {
+        transform: translateY(-120vh);
+    }
+    #menu-controller {
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        padding: 0;
+        align-items: center;
+    }
+    #menu-content {
+        transform: translateY(-120vh);
+        width:100%;
+        height: 60vh;
+        overflow: scroll;
+        padding: 40px 0;
+        text-align: center;
+        min-height: auto;
+
+        header {
+            display:flex;
+            flex-direction: column-reverse;
+            h2{
+                margin-top: 40px;
+            }
+        }
+        #theme{
+            span{
+                margin-left: 20px;
+            }
+        }
+        #recent-tasks{
+            ul{
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                list-style-type: none;
+                li{
+                    display: inline;
+                    margin-top: 10px;
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        #reset {
+            margin: 50px auto;
+        }
+    }
+
+    input#menu:checked {
+        ~ #menu-controller{ transform: translateY(-20vh); }
+        ~ #menu-dimmed-bg{
+            visibility: visible;
+            transform: translateY(0);
+        }
+        ~ #menu-content{
+            visibility: visible;
+            transform: translateY(0);
+        }
+    }
+}

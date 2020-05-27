@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>GetItDone</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="images/favicons/favicon-32x32.png">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="Animation\animate.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+        <script src="jquery\dist\jquery.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+
+        <div id="menu-slider">
+            <input id="menu" type="checkbox">
+            <aside id="menu-controller">
+                <label for="menu" class="icon"></label>
+            </aside>
+
+            <div id="menu-dimmed-bg"></div>
+            <aside id="menu-content">
+                <header class="bold">
+                    <h2>Get It Done</h2>
+                    <label for="menu" class="icon"></label>
+                </header>
+                <section class="bold" id="theme">
+                    <h3>Theme: <span id="light" class="current-theme" onclick="updateTheme('light')">Light</span> <span id="dark" onclick="updateTheme('dark')">Dark</span> </h3>
+                </section>
+                <section class="bold" id="recents">
+                    <h3>Recently Completed tasks</h3>
+                    <ul id="recent-tasks">
+                    </ul>
+                </section>
+                <footer class="bold" id="reset" onclick="attemtReset()">Reset All</footer>
+            </aside>
+        </div>
+
+        <section id="main">
+            <header class="black">
+                <div>
+                    <h2>To Do App</h2>
+                    <h3>It Helps You GET IT DONE!</h3>
+                </div>
+                <div>
+                    <section>
+                        <h2>Total Tasks</h2>
+                        <h3 id="total">0</h3>
+                    </section>
+                    <section>
+                        <h2>Completed Task</h2>
+                        <h3 id="completed">0</h3>
+                    </section>
+                </div>
+            </header>
+            <article id="input-section" class="black">
+                <input type="text" id="task-input" placeholder="Create Task">
+                <label>Press enter to create task</label>
+            </article>
+            <ol class="black" id="tasklist">
+            </ol>
+        </section>
+
+        <dialog id="modal">
+            <h2 class="bold">this deletes all the data, Are you sure?</h2>
+            <button class="black" type="button" name="button" onclick="reset(); closeModal()">yes</button>
+            <button class="black" type="button" name="button" onclick="closeModal()">no</button>
+        </dialog>
+
+
+        <section id="sideObject"></section>
+
+
+
+        <script src="script/webstorage.js" charset="utf-8"></script>
+        <script src="script/tasks.js" charset="utf-8"></script>
+        <script src="script/date_format.js" charset="utf-8"></script>
+        <script src="script/script.js" charset="utf-8"></script>
+    </body>
+</html>
